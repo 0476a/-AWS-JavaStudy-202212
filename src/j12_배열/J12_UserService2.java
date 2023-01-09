@@ -1,10 +1,10 @@
 package j12_배열;
 
-// 풀이
+// 내가 푼거
 import java.util.Scanner;
 
 // 기능을 실행하기 위한 용도 (비지니스 로직)
-public class J12_UserService {
+public class J12_UserService2 {
 
 	private Scanner scanner; // 전역 변수 : 모든 공간에 사용할 수 있기 때문에 밖으로 빼둠
 	// scanner = new Scanner(System.in); // 생성을 하지 않아도 클래스가 정의 될때 부터 할당 됨!
@@ -15,7 +15,7 @@ public class J12_UserService {
 //		userRepository = new J12_UserRepository(null); // 결합도 높은 코드
 //	}
 
-	public J12_UserService(J12_UserRepository userRepository) { // 결합도가 높은 코드 (생성자 호출이 있어야만 스캐너 호출)
+	public J12_UserService2(J12_UserRepository userRepository) { // 결합도가 높은 코드 (생성자 호출이 있어야만 스캐너 호출)
 		scanner = new Scanner(System.in); // 안에 넣은 이유 : 생성하면서 같이 생성되게끔 해줌.
 											// 클래스를 사용하지 않을 때 메모리를 잡아먹기 때문
 		this.userRepository = userRepository; // 결합도가 낮은 코드 (의존성 주입 코드)
@@ -96,20 +96,25 @@ public class J12_UserService {
 		userRepository.saveUser(user);
 	}
 
-	private void showUser() {
-		J12_User user = null;
+	private void showUsersByUsername() {
 
-		System.out.println("========<< 회원 조회 >>========");
-		user = verifyUsername();
+		J12_User user = new J12_User();
 
-		if (user == null) {
-			System.out.println("존재하지 않는 사용자이름입니다.");
-			return;
-		}
+		// 틀린 것
+//		System.out.print("사용자 이름 입력: ");
+//		String u = scanner.nextLine();
+//		J12_User findUsername = userRepository.findUserByUsername(u);
+//		System.out.println(findUsername.toString());
 
+		// 풀이
+		System.out.println("========<< 사용자이름으로 회원 조회 >>========");
+		System.out.print("사용자 이름 입력: ");
+		user.setUsername(scanner.nextLine());
+		user = userRepository.findUserByUsername(user.getUsername());
 		System.out.println(user.toString());
-		System.out.println("===============================");
+		System.out.println("==============================================");
 
+		
 	}
 
 	private void changeUserInfo() {
@@ -129,6 +134,47 @@ public class J12_UserService {
 
 	}
 
+	private void changeMenu() {
+
+		char select = scanner.next().charAt(0);
+		System.out.println("수정 메뉴 선택: " + select);
+
+		if (isBack(select)) {
+			return;
+		} else {
+			if (select == '1') {
+				changePassword();
+			} else if (select == '2') {
+
+			} else if (select == '3') {
+
+			} else {
+				System.out.println(getSelectedErrorMessage());
+			}
+		}
+		System.out.println();
+
+	}
+	
+	private void changePassword() {
+		J12_User user = new J12_User();
+		J12_User u = new J12_User();
+		
+		System.out.print("기존의 비밀번호를 입력하세요: ");
+		user.setPassword(scanner.nextLine());
+		u = userRepository.findUserByUsername(user.getPassword());
+		
+		if (user == u) {
+			System.out.print("새로운 비밀번호를 입력하세요: ");
+			user.setPassword(scanner.nextLine());
+			System.out.println("다시 한번 입력사에요: ");
+			user.setPassword(scanner.nextLine());
+		} else {
+			System.out.println("비밀번호가 일치하지 않습니다. (수정 메뉴로 이동)");
+			return;
+		}
+	}
+
 	private boolean mainMenu(char select) {
 		boolean flag = true;
 
@@ -141,9 +187,10 @@ public class J12_UserService {
 			} else if (select == '2') {
 				registerUser();
 			} else if (select == '3') {
-				showUser();
+				showUsersByUsername();
 			} else if (select == '4') {
-				updateUser();
+				changeUserInfo();
+				changeMenu();
 			} else {
 				System.out.println(getSelectedErrorMessage());
 			}
@@ -166,101 +213,6 @@ public class J12_UserService {
 	private String getSelectedErrorMessage() { // 메시지 내용을 다른 클래스에도 사용할 것이기 때문에
 		return "###<< 잘못된 입력입니다. 다시 입력하세요. >>###";
 		// 메시지를 수정할 때 용이 하기 때문에 String 사용
-	}
-
-	private J12_User verifyUsername() {
-		String username = null;
-		System.out.print("사용자이름: ");
-		username = scanner.nextLine();
-		return userRepository.findUserByUsername(username);
-
-	}
-
-	private void updateUser() {
-		J12_User user = verifyUsername();
-		if (user == null) {
-			System.out.println("존재하지 않는 사용자이름입니다.");
-			return; // 그냥 빠져나가 메인메뉴로 돌아감
-		}
-
-		boolean loopFlag = true;
-		char select = '\0';
-
-		while (loopFlag) {
-			showUpdateMenu(user);
-			select = inputSelect("수정");
-			loopFlag = updateMenu(user, select);
-		}
-
-	}
-
-	private boolean updateMenu(J12_User user, char select) {
-		boolean flag = true;
-
-		if (isBack(select)) {
-			flag = false;
-
-		} else {
-			if (select == '1') {
-				updatePassword(user);
-			} else if (select == '2') {
-
-			} else if (select == '3') {
-
-			} else {
-				System.out.println(getSelectedErrorMessage());
-			}
-		}
-		System.out.println();
-
-		return flag;
-
-	}
-
-	private void showUpdateMenu(J12_User user) {
-		System.out.println("========<< 수정 메뉴 >>========");
-		System.out.println("사용자이름: " + user.getUsername());
-		System.out.println("===============================");
-		System.out.println("1. 비밀번호 변경");
-		System.out.println("2. 이름 변경");
-		System.out.println("3. 이메일 변경");
-		System.out.println("===============================");
-		System.out.println("b. 뒤로가기");
-		System.out.println();
-	}
-
-	private void updatePassword(J12_User user) {
-		String oldPassword = null;
-		String newPassword = null;
-		String confirmPassword = null;
-
-		System.out.println("=========<< 비밀번호 변경 >>=========");
-
-		System.out.print("기존 비밀번호 입력: ");
-		oldPassword = scanner.nextLine();
-
-		if (!comparePassword(user.getPassword(), oldPassword)) {
-			System.out.println("비밀번호가 일치하지 않습니다.");
-			return;
-		}
-
-		System.out.print("새로운 비밀번호 입력: ");
-		newPassword = scanner.nextLine();
-		System.out.print("새로운 비밀번호 확인: ");
-		confirmPassword = scanner.nextLine();
-
-		if (!comparePassword(newPassword, confirmPassword)) {
-			System.out.println("새로운 비밀번호가 서로 일치하지 않습니다.");
-			return;
-		}
-
-		user.setPassword(newPassword);
-		System.out.println("비밀번호 변경 완료.");
-
-	}
-
-	private boolean comparePassword(String prePassword, String nextPassword) {
-		return prePassword.equals(nextPassword);
 	}
 
 }
