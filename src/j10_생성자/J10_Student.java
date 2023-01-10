@@ -6,10 +6,12 @@ public class J10_Student {
 	public String name;
 	public int age;
 
-	J10_Student() {
-		System.out.println("기본 생성자 호출");
+	J10_Student() { // 노 아규먼트 
+		System.out.println("기본 생성자 호출"); // 리턴값 주소값
 	}
 
+	// 리콰이어드 아규먼트 : final이 붙어야함!
+	
 	J10_Student(int age) {
 		System.out.println("학생의 나이: " + age);
 	}
@@ -17,6 +19,8 @@ public class J10_Student {
 	J10_Student(String name) {
 		System.out.println("학생의 이름: " + name);
 	}
+
+	// 올 아규먼트 (모든 멤버변수가 매개변수 되있음!)
 
 	J10_Student(String name, int age) { // 생성자를 호출 할때 값을 넣어주기 위함!
 		// 지역 변수 // 멤버 변수와 지역 변수는 구분 된다!
