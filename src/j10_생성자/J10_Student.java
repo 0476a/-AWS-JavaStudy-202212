@@ -6,12 +6,13 @@ public class J10_Student {
 	public String name;
 	public int age;
 
-	J10_Student() { // 노 아규먼트 
+	J10_Student() { // 노 아규먼트
 		System.out.println("기본 생성자 호출"); // 리턴값 주소값
 	}
 
-	// 리콰이어드 아규먼트 : final이 붙어야함!
+	// 리콰이어드 아규먼트 : final이 붙어야함! 
 	
+	// 커스텀 생성자
 	J10_Student(int age) {
 		System.out.println("학생의 나이: " + age);
 	}

@@ -16,7 +16,10 @@ public class J11_StudentMain {
 //		s2.name = "박땡땡";
 //		
 //		System.out.println("이름: " + s2.name);
-		System.out.println("이름: " + s2.getName()); // 항상 메소드를 통해서 가져와야 보호 가능!
+		
+		s2.setName("김삼겹");
+		System.out.println("이름: " + s2.getName()); // 출력값 : 이름: 김삼겹
+		// 항상 메소드를 통해서 가져와야 보호 가능!
 		
 		// 메소드는 private X 
 	}
