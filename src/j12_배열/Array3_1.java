@@ -17,11 +17,13 @@ public class Array3_1 {
 				
 				int randomNum = random.nextInt(nums.length) + 1; // random값 넣기
 				
-				for(int j = 0; j < nums.length; j++) { // 값이 같은지 다른지 비교
+				// 값이 같은지 다른지 비교
+				for(int j = 0; j < nums.length; j++) {
 					if(nums[j] == randomNum) { // j가 늘어날수록 randomNum 값이랑 계속 비교
 						findFlag = false; // 만약 같은 값이 나오면 false 거짓 값을 넣어준다.
 						break; //다른 값을 찾으면 나와야 해서 for을 나올 때 사용
 					}
+					
 				}
 				
 				if(findFlag) { // findFlag가 참이어야 안에 값이 실행됨! (참, 거짓)
