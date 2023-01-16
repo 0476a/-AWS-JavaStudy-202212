@@ -29,6 +29,11 @@ public class StudentArrayList2 {
 		students.add(new Student("최장기", 4));
 
 		System.out.println(students);
+		
+		Student s = new Student("김준일", 5);
+		
+		boolean check = students.contains(students.get(0));
+		System.out.println(check);
 
 		String searchName = "이무쇠";
 		// 이름이 searchName인 학생을 찾아서 학년을 4학년으로 바꿔라!
@@ -46,10 +51,12 @@ public class StudentArrayList2 {
 		}
 		
 		for(Student student : students) {
+			
 			if(student.getName().equals(searchName)) {
 				student.setYear(4);
 				flag = false;
-				break; // 찾았으니깐 더이상 반복 돌릴 필요 X
+				break; // 찾았으니깐 더이상 반복 돌릴 필요 X 
+				// 메인 메소드에서는 return 사용 X 실행이 종료 되어 버림!
 			}
 		}
 		
