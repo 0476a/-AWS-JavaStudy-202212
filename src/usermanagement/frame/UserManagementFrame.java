@@ -113,8 +113,6 @@ public class UserManagementFrame extends JFrame {
 		passwordLabel.setBounds(60, 285, 57, 15);
 		loginPanel.add(passwordLabel);
 
-		JButton loginButton = new JButton("Login");
-		
 		// MouseAdapter 가 MouseListen에게 업케스팅 되고 있음!
 		// 버튼은 버튼마다 기능이 달라서 익명클래스를 사용해서 각자 기능을 구현해줌.
 //		MouseListener listener = new MouseAdapter() {
@@ -126,15 +124,31 @@ public class UserManagementFrame extends JFrame {
 //		};
 //		
 //		loginButton.addMouseListener(listener);
-		
+
+		JButton loginButton = new JButton("Login");
+
 		loginButton.addMouseListener(new MouseAdapter() {
-			
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				JsonObject loginUser = new JsonObject();
+				loginUser.addProperty("usernameAndEmail", usernameField.getText());
+				loginUser.addProperty("password", passwordField.getText());
+
+				UserService userService = UserService.getInstance();
+
+				Map<String, String> response = userService.authorize(loginUser.toString());
+
+				if (response.containsKey("error")) {
+					JOptionPane.showMessageDialog(null, response.get("error"), "error", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+
+				JOptionPane.showMessageDialog(null, response.get("ok"), "ok", JOptionPane.INFORMATION_MESSAGE);
 				
 			}
 		});
-		
+
 		loginButton.setFont(new Font("Leelawadee", Font.BOLD, 16));
 		loginButton.setBounds(60, 340, 260, 35);
 		loginPanel.add(loginButton);
@@ -274,11 +288,10 @@ public class UserManagementFrame extends JFrame {
 		registerFields.add(registerEmailField);
 	}
 
-	
 	private void clearFields(List<JTextField> textFields) {
 		for (JTextField field : textFields) {
 			// 공백이라도 있으면 setText를 해라
-			if(field.getText().isEmpty()) {
+			if (field.getText().isEmpty()) {
 				continue;
 			}
 			field.setText("");
