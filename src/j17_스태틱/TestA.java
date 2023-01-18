@@ -11,7 +11,6 @@ public class TestA {
 	public static int getNum() {
 		return num;
 	}
-
 	
 	
 	

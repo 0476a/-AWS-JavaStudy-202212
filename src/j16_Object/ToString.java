@@ -32,7 +32,6 @@ public class ToString {
 		
 		
 		
-		
 //		Object obj = new Object();
 //		
 //		System.out.println(obj);

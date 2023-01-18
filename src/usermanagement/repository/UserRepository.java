@@ -3,6 +3,7 @@ package usermanagement.repository;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.Builder;
 import usermanagement.entity.User;
 
 
@@ -21,6 +22,12 @@ public class UserRepository {
 	
 	private UserRepository() {
 		userDataList = new ArrayList<>();
+		userDataList.add(User.builder()
+				.username("aaa")
+				.password("1234")
+				.name("김삼겹")
+				.email("aaa@gmail.com")
+				.build());
 	}
 	
 	public void saveUser(User user) {
@@ -36,6 +43,19 @@ public class UserRepository {
 				break;
 			}
 		}
+		
+		return user;
+	}
+		
+		public User findUserByEmail(String email) {
+			User user = null;
+			
+			for(User u : userDataList) {
+				if(u.getEmail().equals(email)) {
+					user = u;
+					break;
+				}
+			}
 		
 		return user;
 	}
