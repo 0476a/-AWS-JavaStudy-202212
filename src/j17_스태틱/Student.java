@@ -21,6 +21,7 @@ public class Student {
 		                                         // 따라서 name 사용 X
 		return ai;
 	}
+	
 
 	@Override
 	public String toString() {
