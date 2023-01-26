@@ -25,10 +25,12 @@ public class RoleInsert {
 		String sql = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		
 		try {
-			// pool 변수에 getConnection(); 메소드를 사용하여 SQL과 자바프로그램을 연결시켜줌.
+			// pool 변수에 getConnection(); 메소드를 사용하여 SQL과 자바프로그램을 연결시켜줌.`
 			// Connection 자료형을 리턴값으로 둠!
+			// Driver 메니저를 들고 옴!
 			con = pool.getConnection();
 			
 			// sql 변수에 사용하고 싶은 쿼리를 작성해줌.
@@ -52,7 +54,7 @@ public class RoleInsert {
 			
 			// pstmt 변수에 getGeneratedKeys(키 자동 생성) 메소드를 사용해서 생성된 값들의 
 			// 키값을 설정해주고 ResultSet 자료형 변수에 대입해줌.
-			ResultSet rs = pstmt.getGeneratedKeys();
+			rs = pstmt.getGeneratedKeys();
 			
 			// rs 변수에서 next 메소드로 해당 key 값이 무엇인지 확인하고
 			// 해당 값을 rs변수에 getInt메소드를 사용해서 newKey 변수에 대입해줌.
@@ -67,6 +69,10 @@ public class RoleInsert {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			// finally는 try문이 실행되면 무조건 실행됨!
+		} finally {
+			// 연결을 끊어주는 역할을 함!
+			pool.freeConnection(con, pstmt, rs);
 		}
 		
 		// 명령이 몇개가 실행되었는지 값을 리턴해줌! 

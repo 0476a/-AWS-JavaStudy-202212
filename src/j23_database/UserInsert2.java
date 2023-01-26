@@ -33,6 +33,7 @@ public class UserInsert2 {
 		try {
 			// DBConnectionMgr -> Connection 생성 (데이터 베이스 실행! 데이터베이스와 자바를 연결해라!)
 			connection = pool.getConnection();
+			
 
 			// 쿼리문
 			sql = "insert into user_mst\r\n" + "values (0, ?, ?, ?, ?)";
@@ -61,7 +62,7 @@ public class UserInsert2 {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		} 
 
 		return successCount;
 	}
@@ -112,7 +113,8 @@ public class UserInsert2 {
 
 		UserInsert2 userInsert = new UserInsert2();
 
-		User user = User.builder().username("ccc")
+		User user = User.builder()
+				.username("ccc")
 				.password("1234")
 				.name("ccc")
 				.email("ccc@gamil.com")
