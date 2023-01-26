@@ -15,6 +15,8 @@ from
     left outer join role_mst rm on(rm.role_id = rd.role_id)
 where 
 	um.username = "ddd";
+    
+    
 select
 	*
 from 

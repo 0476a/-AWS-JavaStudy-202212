@@ -13,18 +13,18 @@ select * from student_mst;
 -- insert into 
 -- 	`db_study2_explain`.`student_mst`
 --     (`student_id`, `student_name`) 
---     values (4, '손지호');
+--     values (4, '홍길동');
 
 insert into student_mst
 	(student_id, student_name, 	mentor_id)
     
 values
-	(5, 			'이강용', 		10),
-	(6, 			'김준경', 		10),
-	(7, 			'이현수', 		10),
-	(8, 			'정의현', 		10);
+	(5, 			'홍길동', 		10),
+	(6, 			'백길동', 		10),
+	(7, 			'청길동', 		10),
+	(8, 			'흑길동', 		10);
     
-
+select * from student_mst;
     
 /*===========<< university>>=========*/
 insert into university_mst
@@ -44,12 +44,15 @@ select * from student_mst;
 
 update student_mst
 set
-	student_name = '김재영',
+	student_name = '고바꿈',
 	mentor_id = 15
 where
 	student_id = 5;
     
+select * from student_mst;
+    
 /* 멘토 아이디가 10인 학생들의 멘토 아이디를 1로 바꿔라 */
+select * from student_mst;
 
 update student_mst
 set
@@ -60,12 +63,14 @@ where
 select * from student_mst;
 
 /*==============<< delete >>================*/
+select * from student_mst;
+
 delete
 from
 	student_mst
 where 
-	student_id = 4
-and student_name = '손지호';
+	student_id = 5
+and student_name = '고바꿈';
 
 select * from student_mst;
 

@@ -21,7 +21,7 @@ from
 /* 임시 컬럼 추가 */
 select
 	1 as num,
-    '김준일' as name;
+    '김삼겹' as name;
     
 select 
 	student_id,

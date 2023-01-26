@@ -1,6 +1,6 @@
-insert into student_mst values (1, '김동민');
-insert into student_mst values (2, '김두영');
-insert into student_mst values (3, '장진원');
+insert into student_mst values (1, '김삼겹', 1);
+insert into student_mst values (2, '박김치', 1);
+insert into student_mst values (3, '이무쇠', 2);
 
 select * from student_mst;
 
@@ -10,16 +10,16 @@ insert into lecture_mst values (3, 'c', 90000);
 
 select * from lecture_mst;
 
-insert into instructor_mst values (1, '김준일', '서울대');
-insert into instructor_mst values (2, '김준이', '부산대');
-insert into instructor_mst values (3, '김준삼', '경상대');
+insert into instructor_mst values (1, '김선생', 1);
+insert into instructor_mst values (2, '최선생', 2);
+insert into instructor_mst values (3, '황선생', 3);
 
 select * from instructor_mst;
 
 insert into course_mst values (1, 1, 1, 1);
 insert into course_mst values (2, 2, 1, 1);
 insert into course_mst values (3, 3, 2, 2);
-insert into course_mst values (4, 1, 3, 3);
+insert into course_mst values (4, 2, 3, 3);
 
 select * from course_mst;
 
@@ -29,8 +29,8 @@ insert into university_mst values (3, '경상대');
 
 select * from university_mst;
 
-insert into mentor_mst values (1, '문자영');
-insert into mentor_mst values (2, '문성현');
+insert into mentor_mst values (1, '전맨토');
+insert into mentor_mst values (2, '백맨토');
 
 select * from mentor_mst;
 
