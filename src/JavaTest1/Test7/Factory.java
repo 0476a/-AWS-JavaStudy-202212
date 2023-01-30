@@ -14,11 +14,12 @@ public class Factory {
 		return instance;
 	}
 
-	public String getFactoryName() {
-		return factoryName;
-	}
-
-	public void setFactoryName(String factoryName) {
-		this.factoryName = factoryName;
-	}
+//	public String getFactoryName() {
+//		return factoryName;
+//	}
+//
+//	public void setFactoryName(String factoryName) {
+//		this.factoryName = factoryName;
+//	}
+	
 }

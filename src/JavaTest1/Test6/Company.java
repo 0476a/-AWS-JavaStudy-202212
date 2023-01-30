@@ -26,18 +26,20 @@ public class Company {
 				, "Cupertino"
 				, "CA"
 				, "95014");
+
+		System.out.println(gson.toJson(company));
 		
-		JsonObject jObject = new JsonObject();
-		jObject.addProperty("companyId", company.companyId);
-		jObject.addProperty("companyName", company.companyName);
-		jObject.addProperty("address", company.address);
-		jObject.addProperty("city", company.city);
-		jObject.addProperty("state", company.state);
-		jObject.addProperty("zipCode", company.zipCode);
-		
-		String cp = gson.toJson(jObject);
-		
-		System.out.println(cp);
+//		JsonObject jObject = new JsonObject();
+//		jObject.addProperty("companyId", company.companyId);
+//		jObject.addProperty("companyName", company.companyName);
+//		jObject.addProperty("address", company.address);
+//		jObject.addProperty("city", company.city);
+//		jObject.addProperty("state", company.state);
+//		jObject.addProperty("zipCode", company.zipCode);
+//		
+//		String cp = gson.toJson(jObject);
+//		
+//		System.out.println(cp);
 	}
 }
 
