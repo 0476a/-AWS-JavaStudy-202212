@@ -116,20 +116,23 @@ public class Lambda2 {
 		int convertStrNum2 = h.apply("20000");
 		
 		System.out.println(convertStrNum1 + convertStrNum2);
+		// 출력값 : 30000
 		
 		// 5. Predicate<T>
-//		Predicate<String> p1 = str -> str.startsWith("김");
-//		Predicate<String> p2 = str -> str.startsWith("이");
+		Predicate<String> p1 = str -> str.startsWith("김");
+		Predicate<String> p2 = str -> str.startsWith("이");
 		
-//		System.out.println(p1.or(p2).test("이삼겹"));
-//		System.out.println(p1.and(p2).test("김삼겹"));
+		System.out.println(p1.or(p2).test("이삼겹")); // true
+		System.out.println(p1.and(p2).test("김삼겹")); // false
+		System.out.println();
 		
 		Function<Predicate<String>, Boolean> function1 = 
 				
 				predicate -> predicate.or(str -> str.startsWith("이")).test("김삼겹");
 				
 		boolean rs = function1.apply(str -> str.startsWith("김"));
-		System.out.println(rs);
+		System.out.println(rs); // 출력값 : true
+		System.out.println();
 		
 		List<String> nameList = new ArrayList<>();
 		nameList.add("김삼겹");
@@ -140,11 +143,11 @@ public class Lambda2 {
 		
 		// 스트림 -> 일회용
 		Stream<String> stream = nameList.stream().filter(name -> name.startsWith("김"));
-//		stream.forEach(name -> System.out.println(name));
+		// stream.forEach(name -> System.out.println(name));
 		List<String> newList = stream.collect(Collectors.toList());
-//		System.out.println(newList);
+		// System.out.println(newList);
 		
-		newList.forEach(str -> System.out.println(str));
+		newList.forEach(str -> System.out.println(str)); // 출력값 : 김삼겹
 		
 		System.out.println("========== 한줄로 표현 ==========");
 		
