@@ -1,7 +1,8 @@
 call insert_product('아이패드 프로');
 
-/* 뷰 불러오기 */ 
-select
-	*
-from
-	library_view;
+select *
+	from db_study3.Tables
+    where Tabel_type like view
+    and db_study3 like db_study3;
+    
+    

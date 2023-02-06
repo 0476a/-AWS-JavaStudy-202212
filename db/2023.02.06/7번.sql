@@ -1,0 +1,5 @@
+show index from 학생;
+
+
+SHOW FULL TABLES IN STUDENT_DB
+WHERE TABLE_TYPE LIKE 'VIEW';
