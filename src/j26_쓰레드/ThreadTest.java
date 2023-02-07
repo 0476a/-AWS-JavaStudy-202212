@@ -10,10 +10,10 @@ public class ThreadTest {
 		
 		loopThread1.setPriority(6);
 		loopThread4.setPriority(Thread.MAX_PRIORITY);
-		System.out.println(loopThread1.getPriority());
-		System.out.println(loopThread2.getPriority());
-		System.out.println(loopThread3.getPriority());
-		System.out.println(loopThread4.getPriority());
+		System.out.println(loopThread1.getPriority()); // 출력값: 6
+		System.out.println(loopThread2.getPriority()); // 출력값: 5
+		System.out.println(loopThread3.getPriority()); // 출력값: 5
+		System.out.println(loopThread4.getPriority()); // 출력값: 10
 		
 		loopThread1.start();
 		loopThread2.start();
