@@ -29,16 +29,21 @@ public class SocketServer extends Thread {
 	private Gson gson;
 	
 	public SocketServer(Socket socket) {
+		// 본인 멤버 변수에 받은 소켓을 넣어줌.
+		// 클라이언트가 나올때 마다 Socket서버를 생성해준다.
 		this.socket = socket;
 		gson = new Gson();
+		// 소켓서버들을 모아두는 리스트 생성
 		socketServerList.add(this);
 	}
 	
 	@Override
 	public void run() {
 		try {
+			// 요청을 받는 녀석을 실행해준다.
 			reciveRequest();
 		} catch (IOException e) {
+			// 클라이언트에서 먼저 종료를 했을 때.
 			System.out.println(socket.getInetAddress() + ":" + socket.getPort() +  " 클라이언트의 접속이 끊어졌습니다.");
 		}
 	}
@@ -48,6 +53,7 @@ public class SocketServer extends Thread {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 		
 		while(true) {
+			// 클라이언트로 부터 값을 받는 녀석
 			String request = reader.readLine();
 			// 연결이 끊김!
 			if (request == null) {
@@ -62,9 +68,10 @@ public class SocketServer extends Thread {
 		RequestDto<?> requestDto = gson.fromJson(request, RequestDto.class);
 		String resource = requestDto.getResource();
 		switch (resource) {
+			// 값이 register인가를 알아봄.
 			case "register":
-				User user = gson.fromJson((String) requestDto.getBody(), User.class);
-				ResponseDto<?> responseDto = AccoutnController.getInstance().register(user);
+				ResponseDto<?> responseDto =
+					AccoutnController.getInstance().register((String) requestDto.getBody());
 				sendResponse(responseDto);
 				break;
 			default:
@@ -77,6 +84,7 @@ public class SocketServer extends Thread {
 		String response = gson.toJson(responseDto);
 		outputStream = socket.getOutputStream();
 		PrintWriter writer = new PrintWriter(outputStream, true);
+		// 리스폰스 값을 던져줌!
 		writer.println(response);
 		// 버퍼를 비워줌!
 		writer.flush();

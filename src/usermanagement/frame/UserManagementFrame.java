@@ -44,7 +44,7 @@ public class UserManagementFrame extends JFrame {
 	private BufferedReader reader;
 	private PrintWriter writer;
 	private Gson gson;
-	
+
 	private static final int JTextField = 0;
 	private static final int List = 0;
 	private List<JTextField> loginFields;
@@ -63,15 +63,17 @@ public class UserManagementFrame extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					// 해당 서버에 accept를 실행시켜 소켓을 생성함!
 					socket = new Socket("127.0.0.1", 9090);
-					
+
 					UserManagementFrame frame = new UserManagementFrame();
 					frame.setVisible(true);
 				} catch (ConnectException e) {
+					// 기다리는 서버가 없을 경우 발생함!
 					JOptionPane.showMessageDialog(null, "서버에 연결할 수 없습니다.", "접속실패", JOptionPane.ERROR_MESSAGE);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -92,9 +94,9 @@ public class UserManagementFrame extends JFrame {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		
+
 		gson = new Gson();
-		
+
 		loginFields = new ArrayList<>();
 		registerFields = new ArrayList<>();
 
@@ -180,7 +182,7 @@ public class UserManagementFrame extends JFrame {
 				}
 
 				JOptionPane.showMessageDialog(null, response.get("ok"), "ok", JOptionPane.INFORMATION_MESSAGE);
-				
+
 			}
 		});
 
@@ -295,33 +297,31 @@ public class UserManagementFrame extends JFrame {
 				userJson.addProperty("password", registerPasswordField.getText());
 				userJson.addProperty("name", registerNameField.getText());
 				userJson.addProperty("email", registerEmailField.getText());
-				
-				RequestDto<String> requestDto = new RequestDto<String>("register", userJson.toString()); 
-				
+
+				RequestDto<String> requestDto = new RequestDto<String>("register", userJson.toString());
+
 				writer.println(gson.toJson(requestDto));
 				writer.flush();
-				
+
 				try {
 					String response = reader.readLine();
 					System.out.println("응답옴!!");
 					ResponseDto<?> responseDto = gson.fromJson(response, ResponseDto.class);
-					System.out.println(responseDto);
+
+					if (responseDto.getCode().equals("error")) {
+						JOptionPane.showMessageDialog(null, responseDto.getBody(), responseDto.getCode(),
+								JOptionPane.ERROR_MESSAGE);
+						return; // 클릭 메소드를 빠져나감
+					}
+
+					JOptionPane.showMessageDialog(null, responseDto.getBody(), responseDto.getCode(),
+							JOptionPane.INFORMATION_MESSAGE);
+					mainCard.show(mainPanel, "loginPanel");
+					clearFields(registerFields);
+
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
-
-//				UserService userService = UserService.getInstance();
-//
-//				Map<String, String> response = userService.register(userJson.toString());
-//
-//				if (response.containsKey("error")) {
-//					JOptionPane.showMessageDialog(null, response.get("error"), "error", JOptionPane.ERROR_MESSAGE);
-//					return; // 클릭 메소드를 빠져나감
-//				}
-//
-//				JOptionPane.showMessageDialog(null, response.get("ok"), "ok", JOptionPane.INFORMATION_MESSAGE);
-//				mainCard.show(mainPanel, "loginPanel");
-//				clearFields(registerFields);
 			}
 		});
 		registerButton.setFont(new Font("Leelawadee", Font.BOLD, 16));
