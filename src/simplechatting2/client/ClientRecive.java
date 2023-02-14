@@ -36,7 +36,9 @@ public class ClientRecive extends Thread{
 						JoinRespDto joinRespDto = gson.fromJson(responseDto.getBody(), JoinRespDto.class);
 						ChattingClient.getInstace().getContentView().append(joinRespDto.getWelcomeMessage() + "\n");
 						ChattingClient.getInstace().getUserListModel().clear();
-						ChattingClient.getInstace().getUserListModel().addAll(joinRespDto.getConnectedUsers());							
+						ChattingClient.getInstace().getUserListModel().addElement("--- 전체 ---");
+						ChattingClient.getInstace().getUserListModel().addAll(joinRespDto.getConnectedUsers());
+						ChattingClient.getInstace().getUserList().setSelectedIndex(0);
 						break;
 					case "sendMessage":
 						MessageRespDto messageRespDto = gson.fromJson(responseDto.getBody(), MessageRespDto.class);
