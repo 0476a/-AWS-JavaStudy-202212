@@ -15,12 +15,13 @@
 # 4. 카운트, 비율
 # 5. 카운트, 비율
 
-# In[1]:
+# In[18]:
 
 
 import requests
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy import stats
 
 np.set_printoptions(precision=5, suppress=True)
 
@@ -211,7 +212,7 @@ def target5(np_data):
 
 
 if __name__ == '__main__':
-    np_data = np_data_from_data_go_kr_csv('xing.csv')
+    np_data = np_data_from_data_go_kr_csv('전국횡단보도표준데이터.csv')
     print(target1(np_data))
     print(target2(np_data))
     print(target3(np_data))
