@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    letter-spacing: -1px;
+    font-family: '맑은 고딕';
 }
 
 body {
@@ -197,6 +197,7 @@ a {
     margin-left: 70px;
     border: 1px solid #dbdbdb;
     width: 280px;
+    height: 600px;
 }
 
 .product-container:nth-of-type(1) {
@@ -216,226 +217,58 @@ a {
     width: 280px;
 }
 
-.color-text {
-    margin-left: 1.6px;
-    font-size: 10px;
-    font-weight: 600;
-    color: #1d1d1f;
-}
-
 .color-radio-group {
     display: flex;
 }
 
-.color-radio-group input[type=radio] {
+input[type="radio"] {
+    border: 0;
     display: none;
+    
 }
 
-.color-radio-group input[type=radio] + label {
+input[type="radio"] + label::after{
+    pointer-events: none;
+    
+}
+
+
+input[type="radio"] + label::after{
+    content: "●";
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin: 1.6px;
+    border: 2px solid white;
     border-radius: 50%;
+    padding: 2px;
+    margin-right: 6px;
     width: 34px;
     height: 34px;
-
-    cursor: pointer;
+    font-size: 34px;
+    text-align: center;
+    line-height: 27px;
 }
 
-.color-radio-group input[type=radio] + label:hover {
-    border: 2px solid #dbdbdb;
+input[type="radio"] + label:nth-of-type(1) {
+    color: #121212;
 }
 
-.color-radio-group input[type=radio]:checked + label {
-    border: 2px solid #0066cc;
+input[type="radio"] + label:nth-of-type(2) {
+    color: burlywood;
 }
 
-.color-radio-group input[type=radio] + label .color-circle {
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
+input[type="radio"] + label:nth-of-type(3) {
+    color: gray;
 }
 
-.c1 {
-    background-color: #2e3641;
+input[type="radio"] + label:nth-of-type(4) {
+    color: silver;
 }
 
-.c2 {
-    background-color: #F0e5d3;
+input[type="radio"]:checked + label::after{
+    border-color: blue;
 }
 
-.c3 {
-    background-color: #7d7e80;
+input[type="radio"]:hover + label::after{
+    border-color: gray;
 }
-
-.c4 {
-    background-color: #e3e4e6;
-}
-
-.product-detail-info {
-    margin: 20px 0px;
-}
-
-.cpu-image img{
-    padding-bottom: 10px;
-    width: 51px;
-    height: 61px;
-    overflow: hidden;
-}
-
-.product-simple-info {
-    font-size: 24px;
-    columns: #1d1d1f;
-    font-weight: 600;
-}
-
-.product-specs-list {
-    margin-top: 20px;
-}
-
-.product-specs-list li{
-    margin-top: 5.6px;
-    font-size: 14px;
-    color: #1d1d1f;
-}
-
-.price-container {
-    margin-top: 19.2px;
-}
-
-.product-price {
-    font-size: 24px;
-    font-weight: 600;
-    color: #1d1d1f;
-}
-
-.product-price-monthly-plan {
-    padding-top: 6px;
-    font-size: 14px;
-    color: #86868b;
-}
-
-.montly-plan-link {
-    padding-top: 6px;
-    font-size: 14px;
-    color: #0066cc;
-}
-
-.selected-button {
-    margin-top: 30px;
-    width: 280px;
-    height: 36px;
-}
-
-.button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 280px;
-    height: 36px;
-    padding: 8px 16px;
-    border: 1px hidden #dbdbdb;
-    border-radius: 8px;
-    background-color: #0071e3;
-    font-size: 17px;
-    font-weight: 400;
-    color: #ffffff;
-}
-
-.button:hover {
-    background-color: #0077ed;
-}
-
-.savetext {
-    width: 280px;
-    height: 120px;
-    padding-top: 24px;
-}
-
-.saveitem-header {
-    height: 22px;
-    margin: 0;
-    font-size: 12px;
-    font-weight: 600;
-    color: #1d1d1f;
-}
-
-.saveitem-body {
-    margin-right: 20px;
-    width: 260px;
-    height: 52px;
-    padding-bottom: 8px;
-    font-size: 12px;
-    font-weight: 400;
-    color: #1d1d1f;
-}
-
-.savebutton {
-    border: 1px hidden #fdfdfd;
-    background-color: #fdfdfd;
-    font-size: 12px;
-    font-weight: 400;
-    color: #0066cc;
-    cursor: pointer;
-}
-
-.shipping-pickup {
-    height: 184px;
-    padding-top: 20px;
-}
-
-.shipping {
-    height: 104px;
-    padding-top: 16px;
-}
-
-.shipping-header {
-    margin: 0;
-    font-size: 12px;
-    color: #1d1d1f;
-}
-
-.truck {
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-}
-
-.bag {
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-}
-
-.shipping-body {
-    font-size: 12px;
-    color: #1d1d1f;
-    margin-top: 3px;
-    margin-left: 20px;
-}
-
-.shipping-link {
-    font-size: 12px;
-    color: #0066cc;
-    margin-left: 20px;
-}
-
-.pickup {
-    height: 60px;
-    padding-top: 16px;
-}
-
-.pickup-header {
-    margin: 0;
-    font-size: 12px;
-    color: #1d1d1f;
-}
-
-.pickup-link {
-    font-size: 12px;
-    color: #0066cc;
-    margin-left: 20px;
-}
-
-
+    
