@@ -21,6 +21,61 @@ class informationEvent {
             fileService.getInstance().changePhoto();
         }
     }
+
+    addEventAboutMeModifyClick() {
+        // document 안에서 querySelector를 사용하는 것
+        const aboutMeModifyButton = document.querySelector(".m-aboutme");
+        aboutMeModifyButton.onclick = () => {
+            const aboutMeSaveButton = document.querySelector(".s-aboutme");
+            aboutMeSaveButton.classList.remove("button-hidden");
+            aboutMeModifyButton.classList.add("button-hidden");
+            
+            const infoInputContainers = document.querySelectorAll(".info-input-container");
+            infoInputContainers.forEach(infoInputContainer => {
+                // infoInputContainer 안에서 querySelector를 사용하는 것
+                infoInputContainer.querySelector(".info-input").disabled = false;
+            });
+        }
+    }
+
+    addEventAboutMeSaveClick() {
+        const aboutMeSaveButton = document.querySelector(".s-aboutme");
+        aboutMeSaveButton.onclick = () => {
+            const aboutMeModifyButton = document.querySelector(".m-aboutme");
+            aboutMeModifyButton.classList.remove("button-hidden");
+            aboutMeSaveButton.classList.add("button-hidden");
+
+            const infoInputContainers = document.querySelectorAll(".info-input-container");
+            infoInputContainers.forEach(infoInputContainer => {
+                console.log(infoInputContainer.querySelector(".info-input").value);
+                // infoInputContainer 안에서 querySelector를 사용하는 것
+                infoInputContainer.querySelector(".info-input").disabled = true;
+            });
+        }
+    }
+
+    addEventIntroduceModifyClick() {
+        // document 안에서 querySelector를 사용하는 것
+        const introduceModifyButton = document.querySelector(".m-introduce");
+        introduceModifyButton.onclick = () => {
+            const introduceSaveButton = document.querySelector(".s-introduce");
+            introduceSaveButton.classList.remove("button-hidden");
+            introduceModifyButton.classList.add("button-hidden");
+            const introduceInput = document.querySelector(".introduce-input");
+            introduceInput.disabled = false;
+        }
+    }
+
+    addEventIntroduceSaveClick() {
+        const introduceSaveButton = document.querySelector(".s-introduce");
+        introduceSaveButton.onclick = () => {
+            const introduceModifyButton = document.querySelector(".m-introduce");
+            introduceModifyButton.classList.remove("button-hidden");
+            introduceSaveButton.classList.add("button-hidden");
+            const introduceInput = document.querySelector(".introduce-input");
+            introduceInput.disabled = true;
+        }
+    }
 }
 
 class fileService {
@@ -49,4 +104,5 @@ class fileService {
             photoImg.src = e.target.result;
         }
     }
+
 }
