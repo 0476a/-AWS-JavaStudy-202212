@@ -24,7 +24,13 @@ input {
     padding: 5px;
 }
 
-input:focus {
+input, textarea {
+    border: none;
+    outline: none;
+    padding: 5px;
+}
+
+input:focus, textarea:focus {
     background-color: #fafafa;
 }
 
