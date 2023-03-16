@@ -48,7 +48,5 @@ class fileService {
             const photoImg = document.querySelector(".info-photo img");
             photoImg.src = e.target.result;
         }
-
     }
-
 }
