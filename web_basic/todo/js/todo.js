@@ -26,7 +26,14 @@ class TodoEvent {
         }
     }
 
-
+    addEventRemoveTodoClick() {
+        const removeButtons = document.querySelectorAll(".content-footer .remove-button");
+        removeButtons.forEach((removeButton, index) => {
+            removeButton.onclick = () => {
+                ModalService.getInstance().showRemoveModal(index);
+            }
+        });
+    }
 }
 
 class TodoService {
@@ -48,6 +55,11 @@ class TodoService {
             // parse -> JSON을 자바스크립트로 바꿔줌.
             this.todoList = JSON.parse(localStorage.getItem("todoList"));
         }
+        this.loadTodoList();
+    }
+
+    updateLocalStroage() {
+        localStorage.setItem("todoList", JSON.stringify(this.todoList));
         this.loadTodoList();
     }
 
@@ -80,8 +92,7 @@ class TodoService {
         }
 
         this.todoList.push(todoObj);
-        localStorage.setItem("todoList", JSON.stringify(this.todoList));
-        this.loadTodoList();
+        this.updateLocalStroage();
     }
 
     loadTodoList() {
@@ -110,5 +121,7 @@ class TodoService {
                 </li>
             `;
         });
+        // 요소들이 생기고 나서 해당 이벤트를 줘야함!
+        TodoEvent.getInstance().addEventRemoveTodoClick();
     }
 }
