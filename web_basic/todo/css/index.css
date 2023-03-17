@@ -106,8 +106,10 @@
 .content-main {
     padding: 10px;
     height: 65%;
+    word-wrap: break-word;
     word-break: keep-all;
     line-height: 25px;
+    overflow: scroll;
 }
 
 .content-footer {

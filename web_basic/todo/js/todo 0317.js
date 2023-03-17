@@ -131,7 +131,7 @@ class TodoService {
             `;
         });
         // 요소들이 생기고 나서 해당 이벤트를 줘야함!
-        TodoEvent.getInstance().addEventModifyTodoClick();
         TodoEvent.getInstance().addEventRemoveTodoClick();
+        TodoEvent.getInstance().addEventModifyTodoClick();
     }
 }

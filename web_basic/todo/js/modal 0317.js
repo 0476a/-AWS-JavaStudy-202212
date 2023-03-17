@@ -26,16 +26,17 @@ class ModalEvent {
     addEventModifyOkClick(modifyIndex) {
         const modalOkButton = document.querySelector(".modal-ok-button");
         modalOkButton.onclick = () => {
-            const todoModifyInput = document.querySelector(".todo-modify-input");
-            TodoService.getInstance().todoList[modifyIndex].todoContent = todoModifyInput.value;
+            const todoObj = TodoService.getInstance().todoList[modifyIndex];
+            const modify = document.querySelector(".modify-value");
+            todoObj.todoContent = modify.value;
             TodoService.getInstance().updateLocalStroage();
             ModalService.getInstance().closeModal();
         }
     }
 
     addEventModifyTodoOkKeyUp() {
-        const todoModifyInput = document.querySelector(".todo-modify-input");
-        todoModifyInput.onkeyup = () => {
+        const modify = document.querySelector(".modify-value");
+        modify.onkeyup = () => {
             if(window.event.keyCode == 13) {
                 const modalOkButton = document.querySelector(".modal-ok-button");
                 modalOkButton.click();
@@ -83,18 +84,14 @@ class ModalService {
     }
 
     showModifyModal(modifyIndex) {
-        const todoObj = TodoService.getInstance().todoList[modifyIndex];
         const modalSection = document.querySelector(".modal-section");
+        const todoObj = TodoService.getInstance().todoList[modifyIndex];
         modalSection.innerHTML = `
             <div class="modal-header">
                 <h1 class="modal-title">ToDo 수정</h1>
             </div>
             <div class="modal-main">
-                <p class="modal-message">
-                ${todoObj.todoDate} 
-                ${todoObj.todoDateTime}
-                </p>
-                <input type="text" class="todo-modify-input" value="${todoObj.todoContent}">
+                <input  class="modify-value" value="${todoObj.todoContent}">
             </div>
             <div class="modal-footer">
                 <button type="button" class="modal-ok-button">수정</button>
@@ -102,8 +99,8 @@ class ModalService {
             </div>
         `;
 
-        ModalEvent.getInstance().addEventModifyOkClick(modifyIndex);
         ModalEvent.getInstance().addEventModifyTodoOkKeyUp();
+        ModalEvent.getInstance().addEventModifyOkClick(modifyIndex);
         ModalEvent.getInstance().addEventCancelClick();
         this.showModal();
     }
