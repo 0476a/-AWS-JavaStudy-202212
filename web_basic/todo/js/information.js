@@ -85,7 +85,7 @@ class informationEvent {
             const userInfo = InformationService.getInstance().userInfo;
             userInfo["introduce"] = introduceInput.value;
 
-            localStorage.setItem("userInfo", JSON.stringify(userInfo));
+            localStorage.setItem("introduce", JSON.stringify(userInfo));
         }
     }
 }
