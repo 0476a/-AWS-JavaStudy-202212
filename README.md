@@ -390,6 +390,10 @@ ___
 ##### 1) 멀티소켓 만들기
   - [📖 멀티소켓만들기 풀이 1 (Dto, 서버)](https://donotthinkjustdo.tistory.com/entry/Stage17-%EC%82%B0%EB%8C%80%ED%8A%B9-%EC%9E%90%EB%B0%94-%EB%B0%B1%EC%97%94%EB%93%9C%EB%A9%80%ED%8B%B0-%EC%86%8C%EC%BC%93-%EB%A7%8C%EB%93%A4%EA%B8%B0-%ED%92%80%EC%9D%B41-Dto-%EC%84%9C%EB%B2%8420230213-0302)
   - [📖 멀티소켓만들기 풀이 2 (클라이언트)](https://donotthinkjustdo.tistory.com/entry/Stage18-%EC%82%B0%EB%8C%80%ED%8A%B9-%EC%9E%90%EB%B0%94-%EB%B0%B1%EC%97%94%EB%93%9C%EB%A9%80%ED%8B%B0-%EC%86%8C%EC%BC%93-%EB%A7%8C%EB%93%A4%EA%B8%B0-%ED%92%80%EC%9D%B42-%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B820230213-0302)
+  - [🎬구현영상](https://donotthinkjustdo.tistory.com/entry/Stage18-%EC%82%B0%EB%8C%80%ED%8A%B9-%EC%9E%90%EB%B0%94-%EB%B0%B1%EC%97%94%EB%93%9C%EB%A9%80%ED%8B%B0-%EC%86%8C%EC%BC%93-%EB%A7%8C%EB%93%A4%EA%B8%B0-%ED%92%80%EC%9D%B42-%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B820230213-0302#1.-%EA%B5%AC%ED%98%84-%EC%98%81%EC%83%81)
+
+
 
 ##### 2) 소켓 만들기
   - [📖 소켓 통신 만들기](https://donotthinkjustdo.tistory.com/entry/Stage19-%EC%82%B0%EB%8C%80%ED%8A%B9-%EC%9E%90%EB%B0%94-%EB%B0%B1%EC%97%94%EB%93%9C%EC%86%8C%EC%BC%93-%ED%86%B5%EC%8B%A0-%EB%A7%8C%EB%93%A4%EA%B8%B0-20230213-0302)
+  - [🎬구현영상](https://donotthinkjustdo.tistory.com/entry/Stage19-%EC%82%B0%EB%8C%80%ED%8A%B9-%EC%9E%90%EB%B0%94-%EB%B0%B1%EC%97%94%EB%93%9C%EC%86%8C%EC%BC%93-%ED%86%B5%EC%8B%A0-%EB%A7%8C%EB%93%A4%EA%B8%B0-20230213-0302#1.-%EA%B5%AC%ED%98%84-%EC%98%81%EC%83%81)
