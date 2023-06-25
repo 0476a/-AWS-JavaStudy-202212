@@ -1,4 +1,4 @@
-# -AWS-JavaStudy-202212
+# -AWS-JavaStudy-20221228
 
 ### [📖기술블로그(JAVA)](https://donotthinkjustdo.tistory.com/category/JAVA/%EC%82%B0%EB%8C%80%ED%8A%B9%28%EC%9E%90%EB%B0%94%29)
 ### [📖기술블로그(DB)](https://donotthinkjustdo.tistory.com/category/DB/%EC%82%B0%EB%8C%80%ED%8A%B9%28DB%29)
